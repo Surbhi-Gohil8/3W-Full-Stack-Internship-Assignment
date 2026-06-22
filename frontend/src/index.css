@@ -1,35 +1,35 @@
 /* Premium Dark & Light Themes Design System */
 :root {
-  /* Default Dark Theme Variable Tokens */
-  --bg-primary: #121212;
-  --bg-secondary: #1a1a1c;
-  --bg-tertiary: #2a2a2e;
-  --text-primary: #ffffff;
-  --text-secondary: #8e8e93;
-  --accent-color: #007aff;
-  --accent-color-hover: #0056b3;
-  --border-color: #2c2c2e;
+  /* Default Dark Theme Variable Tokens - Premium Obsidian */
+  --bg-primary: #09090b;
+  --bg-secondary: #18181b;
+  --bg-tertiary: #27272a;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --accent-color: #1d9bf0;
+  --accent-color-hover: #1a8cd8;
+  --border-color: rgba(255, 255, 255, 0.08);
   --star-color: #ff3b30;
-  --currency-color: #4cd964;
-  --shadow-color: rgba(0, 0, 0, 0.4);
-  --input-bg: #2a2a2e;
-  --card-bg: #1c1c1e;
+  --currency-color: #10b981;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --input-bg: #27272a;
+  --card-bg: #18181b;
 }
 
 body.light-theme {
-  /* Light Theme Variable Tokens */
-  --bg-primary: #f2f2f7;
+  /* Light Theme Variable Tokens - Slate */
+  --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
-  --bg-tertiary: #e5e5ea;
-  --text-primary: #000000;
-  --text-secondary: #6e6e73;
-  --accent-color: #007aff;
-  --accent-color-hover: #0056b3;
-  --border-color: #e5e5ea;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --accent-color: #1d9bf0;
+  --accent-color-hover: #1a8cd8;
+  --border-color: rgba(0, 0, 0, 0.08);
   --star-color: #ff3b30;
-  --currency-color: #34c759;
-  --shadow-color: rgba(0, 0, 0, 0.08);
-  --input-bg: #f2f2f7;
+  --currency-color: #10b981;
+  --shadow-color: rgba(0, 0, 0, 0.04);
+  --input-bg: #f1f5f9;
   --card-bg: #ffffff;
 }
 
@@ -443,50 +443,82 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
   .posts-feed-list {
     grid-template-columns: 1fr 1fr;
     align-items: start;
+    gap: 24px;
   }
 }
 
-/* Post Cards Styling — Twitter PC style */
+/* Post Cards Styling — Twitter Layout Style */
 .post-card {
   background-color: var(--card-bg) !important;
   border: 1px solid var(--border-color) !important;
   border-radius: 16px !important;
   padding: 16px;
   position: relative;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  display: flex;
-  flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
   box-shadow: 0 4px 12px var(--shadow-color);
 }
 .post-card:hover {
-  border-color: rgba(29, 155, 240, 0.4) !important;
-  box-shadow: 0 6px 16px rgba(29, 155, 240, 0.08);
+  border-color: rgba(29, 155, 240, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.01) !important;
+}
+body.light-theme .post-card:hover {
+  background-color: rgba(0, 0, 0, 0.005) !important;
 }
 
-/* Promoted tag */
+/* Promoted Tag Ribbon */
 .promo-ribbon {
-  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 11px;
   font-weight: 700;
   color: #ff9500;
   background-color: rgba(255, 149, 0, 0.1);
-  padding: 2px 8px;
-  border-radius: 4px;
+  padding: 3px 10px;
+  border-radius: 6px;
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+.promo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ff9500;
+  display: inline-block;
+}
 
-/* Header */
-.pc-header {
+/* Left / Right Twitter Layout Split */
+.pc-layout {
+  display: flex;
+  gap: 12px;
+}
+.pc-left {
+  flex-shrink: 0;
+}
+.pc-right {
+  flex-grow: 1;
+  min-width: 0; /* Prevents overflow */
+}
+
+/* Header Row & Follow Button */
+.pc-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  gap: 12px;
+}
+.pc-user-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 6px;
+  flex-wrap: wrap;
+  min-width: 0;
 }
 .pc-avatar {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   color: #ffffff;
   font-weight: 800;
@@ -495,15 +527,7 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
   align-items: center;
   justify-content: center;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  flex-shrink: 0;
   user-select: none;
-}
-.pc-user-info {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  min-width: 0;
 }
 .pc-name {
   font-size: 15px;
@@ -525,8 +549,34 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
   font-weight: bold;
 }
 .pc-time {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-secondary);
+}
+
+/* Follow Button Style (Premium X pill style) */
+.pc-follow-btn {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, background-color 0.2s, color 0.2s;
+}
+.pc-follow-btn:hover {
+  opacity: 0.9;
+}
+.pc-follow-btn.following {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+.pc-follow-btn.following:hover {
+  background-color: rgba(255, 59, 48, 0.1);
+  color: #ff3b30;
+  border-color: rgba(255, 59, 48, 0.3);
 }
 
 /* Text Content */
@@ -543,12 +593,12 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
 .pc-img-wrapper {
   position: relative;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid var(--border-color);
   overflow: hidden;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   cursor: zoom-in;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   transition: opacity 0.2s;
 }
 .pc-img-wrapper:hover {
@@ -557,7 +607,7 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
 .pc-img {
   width: 100%;
   height: auto;
-  max-height: 340px;
+  max-height: 360px;
   object-fit: cover;
   display: block;
 }
@@ -569,7 +619,7 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
   color: #ffffff;
   padding: 8px 12px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -585,9 +635,10 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
 .pc-actions {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
   border-top: 1px solid var(--border-color);
-  padding-top: 12px;
+  padding-top: 10px;
+  margin-bottom: 2px;
 }
 .pc-action-btn {
   background: none;
@@ -595,7 +646,7 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
   color: var(--text-secondary);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 13px;
   font-weight: 600;
   padding: 6px 12px;
@@ -684,7 +735,7 @@ h1, h2, h3, h4, h5, h6, .brand-logo {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #3a3a3c;
+  background: #27272a;
   color: #ffffff;
   font-weight: 700;
   font-size: 13px;
