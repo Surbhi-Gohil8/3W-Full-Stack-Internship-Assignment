@@ -56,7 +56,7 @@ const CommentSection = ({ postId, initialComments = [], onCommentAdded }) => {
               <div className="comment-bubble p-2 flex-grow-1">
                 <div className="d-flex justify-content-between align-items-center mb-1">
                   <span className="comment-author fw-bold">{comment.username}</span>
-                  <span className="comment-time text-white-50">
+                  <span className="comment-time" style={{ color: 'var(--text-secondary)' }}>
                     {comment.createdAt ? new Date(comment.createdAt).toLocaleDateString(undefined, {
                       month: 'short',
                       day: 'numeric',

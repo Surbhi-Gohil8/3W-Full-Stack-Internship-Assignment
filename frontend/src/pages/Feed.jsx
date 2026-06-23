@@ -46,7 +46,15 @@ const Feed = () => {
   const feedTopRef = useRef(null);
   const textareaRef = useRef(null);
 
-  const currentUser = JSON.parse(localStorage.getItem('user')) || null;
+  const getCurrentUser = () => {
+    try {
+      const userStr = localStorage.getItem('user');
+      return userStr ? JSON.parse(userStr) : null;
+    } catch (e) {
+      return null;
+    }
+  };
+  const currentUser = getCurrentUser();
 
   useEffect(() => {
     fetchPosts(1, false);
@@ -207,7 +215,7 @@ const Feed = () => {
         </div>
 
         {/* ─── Create Post Card ─── */}
-        <Card className="create-post-card border-0 mb-4 text-light">
+        <Card className="create-post-card border-0 mb-4">
           <Card.Header className="bg-transparent border-0 d-flex align-items-center justify-content-between p-3 pb-0">
             <h5 className="create-post-title m-0">Create Post</h5>
             {/* Promotion badge indicator */}
@@ -231,7 +239,7 @@ const Feed = () => {
                 onChange={(e) => setPostText(e.target.value)}
                 disabled={submitting}
                 ref={textareaRef}
-                className="post-textarea mb-2 border-0 bg-transparent text-light"
+                className="post-textarea mb-2 border-0 bg-transparent"
               />
 
               {/* ── Inline Format Bar (shown when AlignLeft is toggled) ── */}
@@ -360,13 +368,13 @@ const Feed = () => {
         {/* Feed List */}
         <div className="posts-feed-list">
           {loading && page === 1 ? (
-            <div className="text-center py-5 text-white-50">
+            <div className="text-center py-5" style={{ color: 'var(--text-secondary)' }}>
               <Spinner animation="border" className="mb-2" />
               <p>Fetching feed...</p>
             </div>
           ) : displayedPosts.length === 0 ? (
             <Card className="border-0 text-center p-5 rounded" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-              <p className="m-0 text-white-50">No posts yet. Be the first to share something!</p>
+              <p className="m-0" style={{ color: 'var(--text-secondary)' }}>No posts yet. Be the first to share something!</p>
             </Card>
           ) : (
             displayedPosts.map((post) => (

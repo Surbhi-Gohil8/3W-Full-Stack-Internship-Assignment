@@ -183,7 +183,16 @@ const PostCard = ({ post, currentUser }) => {
                 <span>{comments.length}</span>
               </button>
 
-              <button className="pc-action-btn share-btn" aria-label="Share post" onClick={() => alert('Post link copied to clipboard!')}>
+              <button
+                className="pc-action-btn share-btn"
+                aria-label="Share post"
+                onClick={() => {
+                  const postUrl = `${window.location.origin}/?post=${post._id}`;
+                  navigator.clipboard.writeText(postUrl)
+                    .then(() => alert('Post link copied to clipboard!'))
+                    .catch(() => alert('Failed to copy post link.'));
+                }}
+              >
                 <Share2 size={16} />
               </button>
             </div>

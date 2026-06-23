@@ -5,7 +5,15 @@ import { Dropdown } from 'react-bootstrap';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('user')) || { name: 'User' };
+  const getUser = () => {
+    try {
+      const userStr = localStorage.getItem('user');
+      return userStr ? JSON.parse(userStr) : { name: 'User' };
+    } catch (e) {
+      return { name: 'User' };
+    }
+  };
+  const user = getUser();
 
   // Generate initials for avatar (e.g. Uyiosa Ogieobadan -> UO)
   const getInitials = (name) => {
